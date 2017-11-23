@@ -10,6 +10,7 @@ export class GameControlComponent implements OnInit {
   @Output() intervalInit = new EventEmitter<number>();
 
   interval;
+  gameStarted = false;
   lastNumber = 0;
 
   ngOnInit() {
@@ -17,12 +18,16 @@ export class GameControlComponent implements OnInit {
 
   onStartGame() {
     this.interval = setInterval( () => {
+      if(this.gameStarted === false) {
+        this.gameStarted = true;
+      }
       this.lastNumber++;
       this.intervalInit.emit(this.lastNumber);
     }, 1000 );
   }
 
-  onStopGame() {
-    this.interval.clearInterval();
+  onPauseGame() {
+    clearInterval(this.interval);
+    this.gameStarted = false;
   }
 }

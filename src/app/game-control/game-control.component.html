@@ -2,8 +2,9 @@
   <button
     type="button"
     class="btn btn-success"
-    (click)="onStartGame()">
+    (click)="onStartGame()"
+    [disabled]="gameStarted">
     START
   </button>
-  <button type="button" class="btn btn-danger" (click)="onStopGame()">STOP</button>
+  <button type="button" class="btn btn-danger" (click)="onPauseGame()">PAUSE</button>
 </div>
